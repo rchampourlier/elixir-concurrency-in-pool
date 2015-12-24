@@ -1,6 +1,6 @@
 # Elixir Concurrency in Pool
 
-Simple Elixir example for performing **concurrent operations, limiting the maximum concurrency using a pool mechanism** and **collecting the results** of all operations.
+Example on how to perform **concurrent operations, limiting the maximum concurrency using a pool mechanism** and **collecting the results** of all operations… in Elixir.
 
 ## Context
 
@@ -48,8 +48,8 @@ end
 
 `ElixirConcurrencyInPoolExample.run(1..5)` performs 3 things:
 - starts the pool (it has already been started when starting the application but the `start_pool/0` method can be called multiple times)
-- start 5 processing jobs for the 1..5 range,
-- collect the responses of the jobs and returns a list of all responses.
+- starts 5 processing jobs for the 1..5 range,
+- collects the responses of the jobs and returns a list of all responses.
 
 ### start_pool/0
 
