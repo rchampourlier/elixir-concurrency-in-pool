@@ -1,8 +1,6 @@
 # Elixir Concurrency in Pool
 
-## tl;dr;
-
-A simple Elixir example for performing **concurrent operations, limiting the maximum concurrency using a pool mechanism** and **collecting the results** of all operations.
+Simple Elixir example for performing **concurrent operations, limiting the maximum concurrency using a pool mechanism** and **collecting the results** of all operations.
 
 ## Context
 
@@ -36,8 +34,6 @@ The code is split in 3 parts:
 - `elixir_concurrency_in_pool_example/worker.ex`: the worker module, which will perform the work and will be managed by the pool,
 - `elixir_concurrency_in_pool_example/processor.ex`: the module defining the job to be done (in the example the job is only sleeping for 500 ms to _fake_ an external webservice request).
 
-When we start the application (`ElixirConcurrencyInPoolExample`), we start the pool with `start_pool/0`. The pool is provided by [poolboy](https://github.com/devinus/poolboy) and configured to spawn a maximum of 2 concurrent workers (`{:max_overflow, 2}`).
-
 Once the application is started, the processing can be done using `ElixirConcurrencyInPoolExample.run(1..10)`. A range is passed which represents the number of jobs to be run.
 
 ### run/1
@@ -53,11 +49,13 @@ end
 `ElixirConcurrencyInPoolExample.run(1..5)` performs 3 things:
 - starts the pool (it has already been started when starting the application but the `start_pool/0` method can be called multiple times)
 - start 5 processing jobs for the 1..5 range,
-- collect the responses of the jobs.
+- collect the responses of the jobs and returns a list of all responses.
 
 ### start_pool/0
 
-This function is based on [elixir_poolboy_example](https://github.com/thestonefox/elixir_poolboy_example) where you will find more details. The only change I made was this:
+This function is based on [elixir_poolboy_example](https://github.com/thestonefox/elixir_poolboy_example) where you will find more details. The concurrency is limited by `{:max_overflow, 2}`.
+
+The only change I made was handling the result of starting the supervisor to handle the case when the pool has already been started:
 
 ```elixir
 case Supervisor.start_link(children, options) do
@@ -65,8 +63,6 @@ case Supervisor.start_link(children, options) do
   {:error, {:already_started, pid}} -> {:ok, pid}
 end
 ```
-
-This allows to call the function several times. It handles the case when the pool has already been started, and returns its pid too.
 
 ### start_jobs/1
 
@@ -129,9 +125,9 @@ We iterate over the range to run `receive` as many times as spawned jobs. Each s
 
 ## Conclusion
 
-Combining the 3 techniques is not trivial when you're learning Elixir! I hope this example will help some of you.
+Combining the 3 techniques is not trivial when you're still learning Elixir! I hope this example will be helpful to beginners like me.
 
-There is a lot to improve, so do not hesitate to share your comments or your own articles and examples. And if you wish to contribute to this article and the example code, feel free to submit issues / pull requests on the [Github repository](https://github.com/rchampourlier/elixir-concurrency-in-pool-example)!
+There is still a lot to improve, so do not hesitate to share your comments, articles and examples. And if you wish to contribute to this article and the example code, feel free to submit issues / pull requests on the [Github repository](https://github.com/rchampourlier/elixir-concurrency-in-pool-example)!
 
 ## Playing with the example
 
