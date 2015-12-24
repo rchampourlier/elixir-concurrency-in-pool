@@ -1,0 +1,9 @@
+{application,elixir_concurrency_in_pool_example,
+             [{registered,[]},
+              {description,"elixir_concurrency_in_pool_example"},
+              {mod,{'Elixir.ElixirConcurrencyInPoolExample',[]}},
+              {applications,[kernel,stdlib,elixir]},
+              {vsn,"0.0.1"},
+              {modules,['Elixir.ElixirConcurrencyInPoolExample',
+                        'Elixir.ElixirConcurrencyInPoolExample.Processor',
+                        'Elixir.ElixirConcurrencyInPoolExample.Worker']}]}.

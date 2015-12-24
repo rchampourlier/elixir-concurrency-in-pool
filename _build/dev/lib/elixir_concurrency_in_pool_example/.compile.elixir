@@ -1,0 +1,20 @@
+v1.
+{<<"_build/dev/lib/elixir_concurrency_in_pool_example/ebin/Elixir.ElixirConcurrencyInPoolExample.Worker.beam">>,
+ 'Elixir.ElixirConcurrencyInPoolExample.Worker',
+ <<"lib/elixir_concurrency_in_pool_example/worker.ex">>,
+ ['Elixir.Kernel','Elixir.GenServer','Elixir.Module'],
+ [erlang,'Elixir.ElixirConcurrencyInPoolExample.Processor'],
+ [],nil}.
+{<<"_build/dev/lib/elixir_concurrency_in_pool_example/ebin/Elixir.ElixirConcurrencyInPoolExample.Processor.beam">>,
+ 'Elixir.ElixirConcurrencyInPoolExample.Processor',
+ <<"lib/elixir_concurrency_in_pool_example/processor.ex">>,
+ ['Elixir.Kernel'],
+ [timer,'Elixir.IO','Elixir.String.Chars'],
+ [],nil}.
+{<<"_build/dev/lib/elixir_concurrency_in_pool_example/ebin/Elixir.ElixirConcurrencyInPoolExample.beam">>,
+ 'Elixir.ElixirConcurrencyInPoolExample',
+ <<"lib/elixir_concurrency_in_pool_example.ex">>,
+ ['Elixir.Kernel','Elixir.Application','Elixir.Module'],
+ [erlang,'Elixir.ElixirConcurrencyInPoolExample.Worker','Elixir.IO',
+  'Elixir.String.Chars','Elixir.Enum',poolboy,'Elixir.Supervisor'],
+ [],nil}.

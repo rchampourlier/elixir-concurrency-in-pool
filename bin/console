@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ -f .env ]
+then
+  env $(cat .env | xargs) iex -S mix
+else
+  iex -S mix
+fi
