@@ -83,7 +83,7 @@ end
 
 Here we simple iterate over the range to start a job in an independent process for every item of the range. The job is handled by `execute_job/2`. We pass `caller` so that the job can `send` a message back to the caller. We will use this to collect the responses.
 
-```
+```elixir
 defp execute_job(caller, x) do
   response = pooled_job(x)
   send caller, {:ok, response}
@@ -92,7 +92,7 @@ end
 
 `execute_job/2` will perform the job through a pool worker, using `pooled_job/1`.
 
-```
+```elixir
 defp pooled_job(x) do
   :poolboy.transaction(
     :example_pool,
